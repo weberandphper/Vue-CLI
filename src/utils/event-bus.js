@@ -7,5 +7,5 @@
  *  仅保证微信小程序运行正常
  */
 
-import Vue from 'vue' 
-export const eventBus = new Vue()
+import Vue from "vue";
+export const eventBus = new Vue();
