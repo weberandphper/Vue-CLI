@@ -1,0 +1,82 @@
+//调试
+.border-red{
+  border:1px solid red;
+}
+
+.border-blue{
+  border:1px solid blue;
+}
+
+//隐藏滚动条
+.hide-scroll{
+  //限定最大高度如max-height:100px;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: scroll;
+  margin-bottom: -.2rem;
+  overflow: -moz-scrollbars-none;
+  overflow: -moz-scrollbars-none;
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+//在行末宽度不够显示整个单词时，会把单词截断
+.break-all{
+  word-break: break-all
+}
+
+//在容器边界自动换行，会把整个长单词看成一个整体放到下一行，而不会把单词截断
+.break-world{
+  word-wrap: break-word
+}
+
+
+// 文字省略号 class
+%text-substr-common {
+  text-overflow: ellipsis !important;
+  overflow: hidden;
+}
+
+.text-substr {
+  @extend %text-substr-common;
+  white-space: nowrap;
+}
+
+.text-substr2 {
+  @extend %text-substr-common;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.text-substr3 {
+  @extend %text-substr-common;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+// 浮动
+.f-left {
+  float: left;
+  &::after {
+    height: 0;
+    content: '';
+    zoom: 1;
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+.f-right {
+  float: right;
+  &::after {
+    height: 0;
+    content: '';
+    zoom: 1;
+    clear: both;
+    overflow: hidden;
+  }
+}

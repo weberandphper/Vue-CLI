@@ -1,0 +1,63 @@
+.cube-toast-tip.android {
+  color: #ffffff;
+  margin-bottom: -2px;
+}
+
+.cube-popup-content .cube-dialog-main {
+  height: 170px;
+  width: 296px;
+  border-radius: 12px;
+}
+// picker
+.cube-picker-panel {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  width: 375px;
+  height: 284px;
+}
+.cube-picker-title-group {
+  border-bottom: none;
+  &::after {
+    width: 0;
+    height: 0;
+    border: transparent;
+  }
+}
+.cube-picker-confirm {
+  color: #3170f9;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 4px;
+  margin-right: 9px;
+}
+
+.cube-picker-cancel {
+  font-size: 16px;
+  font-weight: 400;
+  color: #757575;
+  margin-top: 4px;
+  margin-left: 9px;
+}
+
+.cube-picker-wheel-item {
+  color: #212121;
+  font-size: 18px;
+}
+
+.cube-picker-title {
+  color: #212121;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+// 修改 Toast 样式
+.cube-toast {
+  .cube-popup-content {
+    padding: 10px 20px;
+    background: rgba(34, 34, 34, 0.9);
+    .cube-toast-tip {
+      font-size: 12px;
+      color: #ffffff;
+    }
+  }
+}
