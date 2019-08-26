@@ -1,5 +1,3 @@
-# vue-cli
-
 ## Project setup
 ```
 npm install
@@ -27,3 +25,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# vue-cli-3.0-
+>>>>>>> 82d963907cff6a2118c01fd942b74ebdc92d3635
