@@ -1,11 +1,25 @@
+/**
+ *  Link : https://github.com/weberandphper/MiniProgram
+ *  Author : anspray 一朵浪花
+ *
+ *  Update time: 2019/08/27
+ *
+ *  权限
+ */
+
 import router from '@/router'
 import store from '@/store'
 import { getToken } from './auth'
-import NProgress from 'nprogress' // 进度条
-// import 'nprogress/nprogress.css' // 进度条样式
+import NProgress from 'nprogress'
+// import 'nprogress/nprogress.css'
 import { Message } from 'element-ui'
 
-const whiteList = ['/login', '/', '/about'] // 不重定向白名单
+const whiteList = [
+  '/',
+  '/login',
+  '/about'
+]
+
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
@@ -13,7 +27,7 @@ router.beforeEach((to, from, next) => {
       next({
         path: '/'
       })
-    } else { // 实时拉取用户的信息
+    } else {
       store.dispatch('GetUserInfo').then(res => {
         next()
       }).catch(err => {
@@ -35,5 +49,5 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(() => {
-  NProgress.done() // 结束Progress
+  NProgress.done()
 })

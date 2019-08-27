@@ -1,3 +1,12 @@
+/**
+ *  Link : https://github.com/weberandphper/MiniProgram
+ *  Author : anspray 一朵浪花
+ *
+ *  Update time: 2019/08/27
+ *
+ *  请求封装
+ */
+
 import axios from 'axios'
 import store from '@/store'
 import Message from 'element-ui'

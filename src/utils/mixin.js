@@ -2,9 +2,9 @@
  *  Link : https://github.com/weberandphper/MiniProgram
  *  Author : anspray 一朵浪花
  *
- *  Update time: 2019/08/19
+ *  Update time: 2019/08/27
  *
- *  仅保证微信小程序运行正常
+ *  混合
  */
 
 export default {
