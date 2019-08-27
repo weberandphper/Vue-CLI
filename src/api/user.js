@@ -1,17 +1,13 @@
-import request from '@/utils/http'
+import http from '@/utils/http'
 
 export default {
   // 登录
   login (data) {
-    return request({
-      url: '/login',
-      method: 'post',
-      data
-    })
+    return http({ url: '/login', method: 'post', data })
   },
   // 获取用户信息
   getUserInfo () {
-    return request({
+    return http({
       url: '/userinfo',
       method: 'get'
     })

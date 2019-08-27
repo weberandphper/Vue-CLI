@@ -15,6 +15,7 @@ import Cookies from 'js-cookie'
 import './styles/index.scss'
 import './assets/font/iconfont.css'
 import './utils/permission'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.prototype.$api = api
 Vue.prototype.$store = store
