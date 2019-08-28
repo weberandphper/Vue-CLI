@@ -9,7 +9,7 @@
 
 import axios from 'axios'
 import store from '@/store'
-import Message from 'element-ui'
+import { Message } from 'element-ui'
 
 // 创建axios 实例
 const service = axios.create({
@@ -41,6 +41,7 @@ service.interceptors.request.use(
 
 // response 拦截器
 service.interceptors.response.use(
+
   response => {
     const res = response.data
     // 这里处理一些response 正常放回时的逻辑

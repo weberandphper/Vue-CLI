@@ -7,11 +7,14 @@ import getters from '@/store/getters'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  state: {
+    test: 'fdsfd'
+  },
+  getters,
   modules: {
     app,
     user
-  },
-  getters
+  }
 })
 
 export default store
