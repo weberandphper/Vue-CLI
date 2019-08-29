@@ -19,13 +19,12 @@ router.beforeEach((to, from, next) => {
   } else {
     if (getToken()) {
       store.dispatch('GetUserInfo').then(res => { next() }).catch(err => {
-        alert(2)
-
         store.dispatch('FedLogOut').then(() => {
           Message.error('拉取用户信息失败，请重新登录！' + err)
           next({
             path: '/'
           })
+          NProgress.done()
         })
       })
     } else {

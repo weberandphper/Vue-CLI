@@ -5,11 +5,7 @@ class Auth2 {
    *  登录
    */
   login (data) {
-    return http({
-      url: '/login',
-      method: 'post',
-      data
-    })
+    return http({ url: '/login', method: 'post', data })
   }
 
   /**
@@ -19,12 +15,12 @@ class Auth2 {
     return http.post('/api/Wechatpay/OAuth2', params)
   }
 
-  // 获取用户信息
+  /**
+   *  获取用户信息
+   */
+
   getUserInfo () {
-    return http({
-      url: '/userinfo',
-      method: 'get'
-    })
+    return http({ url: '/userinfo', method: 'get' })
   }
 }
 
