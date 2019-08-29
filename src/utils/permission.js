@@ -8,7 +8,7 @@ import 'nprogress/nprogress.css'
 const whiteList = [
   '/',
   '/login',
-  // '/about',
+  '/about',
   '/404'
 ]
 

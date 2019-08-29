@@ -10,11 +10,45 @@
 import axios from 'axios'
 import store from '@/store'
 import { Message } from 'element-ui'
+const http = {}
 
-// 创建axios 实例
+// 创建axios 实例 (注意：请求执行顺序 请求拦截器 => validateStatus => 响应拦截器)
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
-  timeout: 5000 // 请求超时时间
+  timeout: 5000, // 请求超时时间
+  validateStatus (status) {
+    switch (status) {
+      case 400:
+        Message.error('请求出错')
+        break
+      case 401:
+        Message.warning({
+          message: '授权失败，请重新登录'
+        })
+        store.commit('LOGIN_OUT')
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
+        return
+      case 403:
+        Message.warning({
+          message: '拒绝访问'
+        })
+        break
+      case 404:
+        Message.warning({
+          message: '请求错误,未找到该资源'
+        })
+        break
+      case 500:
+        Message.warning({
+          message: '服务端错误'
+        })
+        break
+    }
+
+    return status >= 200 && status < 300
+  }
 })
 
 // request 拦截器
@@ -24,7 +58,6 @@ service.interceptors.request.use(
 
     // loading + 1
     store.dispatch('SetLoading', true)
-
     return config
   },
   error => {
@@ -35,39 +68,80 @@ service.interceptors.request.use(
       store.dispatch('SetLoading', 0)
     }, 300)
 
-    Promise.reject(error)
-  }
-)
-
-// response 拦截器
-service.interceptors.response.use(
-
-  response => {
-    const res = response.data
-    // 这里处理一些response 正常放回时的逻辑
-
-    // 比如， 如果code 非 200 统一提示错误，当然你仍可以更详细的区分
-    if (res.code !== 200) {
-      Message({
-        message: '全局错误提示演示：' + res.msg,
-        type: 'error',
-        duration: 5000
-      })
-    }
-
-    // loading - 1
-    store.dispatch('SetLoading', false)
-
-    return res
-  },
-  error => {
-    // 这里处理一些response 出错时的逻辑
-
-    // loading - 1
-    store.dispatch('SetLoading', false)
-
     return Promise.reject(error)
   }
 )
+
+service.interceptors.response.use(
+  response => {
+    // loading - 1
+    store.dispatch('SetLoading', false)
+    return response.data
+  },
+  error => {
+    // loading - 1
+    store.dispatch('SetLoading', false)
+    console.log('请求出错', error)
+    return Promise.reject(error)
+  }
+)
+
+http.get = (url, options) => {
+  let loading
+  if (!options || options.isShowLoading !== false) {
+    loading = document.getElementById('ajaxLoading')
+    loading.style.display = 'block'
+  }
+  return new Promise((resolve, reject) => {
+    service
+      .get(url, options)
+      .then(response => {
+        if (!options || options.isShowLoading !== false) {
+          loading = document.getElementById('ajaxLoading')
+          loading.style.display = 'none'
+        }
+        if (response.code === 1) {
+          resolve(response.data)
+        } else {
+          Message.error({
+            message: response.msg
+          })
+          reject(response.msg)
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  })
+}
+
+http.post = (url, data, options) => {
+  let loading
+  if (!options || options.isShowLoading !== false) {
+    loading = document.getElementById('ajaxLoading')
+    loading.style.display = 'block'
+  }
+  return new Promise((resolve, reject) => {
+    service
+      .post(url, data, options)
+      .then(response => {
+        if (!options || options.isShowLoading !== false) {
+          loading = document.getElementById('ajaxLoading')
+          loading.style.display = 'none'
+        }
+        if (response.code === 1) {
+          resolve(response.data)
+        } else {
+          Message.error({
+            message: response.msg
+          })
+          reject(response.message)
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  })
+}
 
 export default service

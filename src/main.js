@@ -11,11 +11,11 @@ import eventBus from './utils/event-bus'
 
 import ElementUI from 'element-ui'
 import Cookies from 'js-cookie'
-
-import './styles/index.scss'
-import './assets/font/iconfont.css'
 import './utils/permission'
+
 import 'element-ui/lib/theme-chalk/index.css'
+import './assets/font/iconfont.css'
+import './styles/index.scss'
 
 Vue.prototype.$api = api
 Vue.prototype.$store = store
@@ -30,8 +30,8 @@ for (let key in filters) {
   Vue.filter(key, filters[key])
 }
 
-Vue.use(common)
 Vue.use(mixin)
+Vue.use(common)
 Vue.config.productionTip = false
 
 new Vue({

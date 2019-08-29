@@ -7,10 +7,7 @@ class User {
   }
   // 获取用户信息
   getUserInfo () {
-    return http({
-      url: '/userinfo',
-      method: 'get'
-    })
+    return http({ url: '/api/Account/RetrieveLoginPwdss', method: 'post' })
   }
 }
 
