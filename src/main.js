@@ -12,11 +12,10 @@ import eventBus from './utils/event-bus'
 import ElementUI from 'element-ui'
 import Cookies from 'js-cookie'
 import './utils/permission'
-import '@/icons'
 
 import 'element-ui/lib/theme-chalk/index.css'
-import './assets/font/iconfont.css'
 import './styles/index.scss'
+import '@/icons'
 
 Vue.prototype.$api = api
 Vue.prototype.$store = store

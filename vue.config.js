@@ -1,10 +1,9 @@
 const path = require('path')
+const publicPath = process.env.NODE_ENV !== 'development' ? '././' : ''
 
 function resolve (dir) {
   return path.join(__dirname, './', dir)
 }
-
-const publicPath = process.env.NODE_ENV !== 'development' ? '././' : ''
 
 module.exports = {
   publicPath,
@@ -36,17 +35,6 @@ module.exports = {
       .rule('images')
       .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
   },
-  // devServer: {
-  //   proxy: {
-  //     '/proxy': {
-  //       target: 'http://47.94.138.75',
-  //       changeOrigin: true,
-  //       pathRewrite: {
-  //         '^/proxy': ''
-  //       }
-  //     }
-  //   }
-  // },
   devServer: {
     proxy: {
       '/api': {
