@@ -1,5 +1,14 @@
 <template>
   <div class="hello">
+
+    <svg-icon icon-class="user" />
+    <svg-icon icon-class="user" />
+    <svg-icon icon-class="add" />
+
+    <svg-icon icon-class="add" />
+
+    d
+    sds
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>

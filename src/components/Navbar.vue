@@ -2,10 +2,10 @@
   <div class="navbar-component">
     <ul class="nav">
       <li>
-        <router-link to="/">Home</router-link>
+        <router-link to="/"><svg-icon icon-class="eye" />Home</router-link>
       </li>
       <li>
-        <router-link to="/about">About</router-link>
+        <router-link to="/about"><svg-icon icon-class="user" />About</router-link>
       </li>
     </ul>
   </div>
