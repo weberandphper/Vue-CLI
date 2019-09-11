@@ -87,20 +87,14 @@ service.interceptors.response.use(
 )
 
 http.get = (url, options) => {
-  let loading
-  if (!options || options.isShowLoading !== false) {
-    loading = document.getElementById('ajaxLoading')
-    loading.style.display = 'block'
+  if (options && !options.isShowLoading) {
+    store.dispatch('SetLoading', 0)
   }
   return new Promise((resolve, reject) => {
     service
       .get(url, options)
       .then(response => {
-        if (!options || options.isShowLoading !== false) {
-          loading = document.getElementById('ajaxLoading')
-          loading.style.display = 'none'
-        }
-        if (response.code === 1) {
+        if (response.code === 200) {
           resolve(response.data)
         } else {
           Message.error({
@@ -116,20 +110,14 @@ http.get = (url, options) => {
 }
 
 http.post = (url, data, options) => {
-  let loading
-  if (!options || options.isShowLoading !== false) {
-    loading = document.getElementById('ajaxLoading')
-    loading.style.display = 'block'
+  if (options && !options.isShowLoading) {
+    store.dispatch('SetLoading', 0)
   }
   return new Promise((resolve, reject) => {
     service
       .post(url, data, options)
       .then(response => {
-        if (!options || options.isShowLoading !== false) {
-          loading = document.getElementById('ajaxLoading')
-          loading.style.display = 'none'
-        }
-        if (response.code === 1) {
+        if (response.code === 200) {
           resolve(response.data)
         } else {
           Message.error({
