@@ -1,5 +1,7 @@
 ## 自用单页应用后台项目模版
 
+vue
+
 
 ## Project setup
 ```
