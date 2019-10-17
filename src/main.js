@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import App from './App'
-import api from './api'
-import store from './store'
-import router from './router'
+import App from '@/App'
+import api from '@/api'
+import store from '@/store'
+import router from '@/router/index'
 
 import mixin from './utils/mixin'
 import common from './utils/common'

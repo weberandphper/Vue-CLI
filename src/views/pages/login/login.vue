@@ -29,61 +29,61 @@
 <script>
 import { login } from '@/api/permission'
 export default {
-    data() {
-        const validateUsername = (rule, value, callback) => {
-            if (value.length < 5) {
-                callback(new Error('请输入正确的用户名'))
-            } else {
-                callback()
-            }
-        }
-        const validatePass = (rule, value, callback) => {
-            if (value.length < 5) {
-                callback(new Error('密码不能小于5位'))
-            } else {
-                callback()
-            }
-        }
-        return {
-            loginForm: {
-                username: 'admin',
-                password: '123456'
-            },
-            loginRules: {
-                username: [
-                    {
-                        required: true,
-                        trigger: 'blur',
-                        validator: validateUsername
-                    }
-                ],
-                password: [
-                    { required: true, trigger: 'blur', validator: validatePass }
-                ]
-            },
-            loading: false,
-            pwdType: 'password'
-        }
-    },
-    methods: {
-        showPwd() {
-            if (this.pwdType === 'password') {
-                this.pwdType = ''
-            } else {
-                this.pwdType = 'password'
-            }
-        },
-        async login() {
-            try {
-                let data = await login(this.loginForm)
-                let token = data.token
-                this.$store.commit('LOGIN_IN', token)
-                this.$router.replace('/')
-            } catch (e) {
-                console.log(e)
-            }
-        }
+  data () {
+    const validateUsername = (rule, value, callback) => {
+      if (value.length < 5) {
+        callback(new Error('请输入正确的用户名'))
+      } else {
+        callback()
+      }
     }
+    const validatePass = (rule, value, callback) => {
+      if (value.length < 5) {
+        callback(new Error('密码不能小于5位'))
+      } else {
+        callback()
+      }
+    }
+    return {
+      loginForm: {
+        username: 'admin',
+        password: '123456'
+      },
+      loginRules: {
+        username: [
+          {
+            required: true,
+            trigger: 'blur',
+            validator: validateUsername
+          }
+        ],
+        password: [
+          { required: true, trigger: 'blur', validator: validatePass }
+        ]
+      },
+      loading: false,
+      pwdType: 'password'
+    }
+  },
+  methods: {
+    showPwd () {
+      if (this.pwdType === 'password') {
+        this.pwdType = ''
+      } else {
+        this.pwdType = 'password'
+      }
+    },
+    async login () {
+      try {
+        let data = await login(this.loginForm)
+        let token = data.token
+        this.$store.commit('LOGIN_IN', token)
+        this.$router.replace('/')
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
 }
 </script>
 

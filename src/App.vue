@@ -1,23 +1,20 @@
 <template>
-  <div class="app">
-    <Navbar />
-    <ContentView></ContentView>
-    <RequestLoding></RequestLoding>
+  <div id="app">
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  components: {
-    Navbar: () => import('@/components/Navbar'),
-    ContentView: () => import('@/components/ContentView'),
-    RequestLoding: () => import('@/components/RequestLoading')
-  }
+  name: 'App'
 }
 </script>
 
-<style lang="scss" scoped>
-.app{
-
+<style lang="scss">
+#app {
+    height: 100%;
+    > div {
+        height: 100%;
+    }
 }
 </style>
